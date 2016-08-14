@@ -4,8 +4,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="recent">
-  <p *ngFor="let earthquake of earthquakes">
-    {{ earthquake.magnitude }}
-  </p>
+<ion-content class="recent">
+  <ion-list no-lines>
+    <ion-list-header>
+      Past Hour
+    </ion-list-header>
+    <ion-item *ngFor="let earthquake of earthquakes">
+      <ion-avatar item-left>
+        <p class="magnitude" [ngStyle]="{'background-color': '#e73737'}">
+          {{ earthquake.magnitude }}
+        </p>
+      </ion-avatar>
+      <h2>{{ earthquake.country }}</h2>
+      <h3>{{ earthquake.place }}</h3>
+      <p>{{ earthquake.depth }} km deep</p>
+      <p>{{ earthquake.date }}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
