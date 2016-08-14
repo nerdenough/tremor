@@ -4,13 +4,13 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {Earthquake} from '../../models/earthquake';
+import {Tremor} from '../models/tremor';
 
 @Injectable()
-export class RecentService {
+export class TremorService {
   constructor (private http: Http) {}
 
-  getEarthquakes (url: string): Observable<Earthquake[]> {
+  getTremors (url: string): Observable<Tremor[]> {
     return this.http
       .get(url)
       .map(this.extractData)
@@ -20,7 +20,7 @@ export class RecentService {
   private extractData (res: Response) {
     let body = res.json();
     let features = body.features;
-    let earthquakes = [];
+    let tremors = [];
 
     for (let i = 0; i < features.length; i++) {
       let feature = features[i];
@@ -42,26 +42,26 @@ export class RecentService {
         + date.getUTCFullYear() + ' @ ' + date.getUTCHours() + ':'
         + date.getUTCMinutes() + ' UTC';
 
-      // Create earthquake object
-      let earthquake = new Earthquake();
+      // Create tremor object
+      let tremor = new Tremor();
 
-      earthquake.longitude = feature.geometry.coordinates[0];
-      earthquake.latitude = feature.geometry.coordinates[1];
-      earthquake.depth = feature.geometry.coordinates[2].toFixed(1);
+      tremor.longitude = feature.geometry.coordinates[0];
+      tremor.latitude = feature.geometry.coordinates[1];
+      tremor.depth = feature.geometry.coordinates[2].toFixed(1);
 
-      earthquake.country = country;
-      earthquake.place = location;
+      tremor.country = country;
+      tremor.place = location;
 
-      earthquake.magnitude = feature.properties.mag.toFixed(1);
-      earthquake.intensity = feature.properties.mmi;
+      tremor.magnitude = feature.properties.mag.toFixed(1);
+      tremor.intensity = feature.properties.mmi;
 
-      earthquake.time = time;
-      earthquake.date = dateString;
+      tremor.time = time;
+      tremor.date = dateString;
 
-      earthquakes.push(earthquake);
+      tremors.push(tremor);
     }
 
-    return earthquakes;
+    return tremors;
   }
 
   private handleError (error: any) {

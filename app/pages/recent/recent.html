@@ -5,46 +5,69 @@
 </ion-header>
 
 <ion-content class="recent">
-  <ion-list no-lines>
+  <ion-list class="tremor-list" no-lines>
     <ion-list-header>Past Hour</ion-list-header>
 
-    <ion-item *ngFor="let earthquake of earthquakes | pastHourFilter">
-      <ion-avatar item-left>
-        <p class="magnitude">
-          {{ earthquake.magnitude }}
-        </p>
-      </ion-avatar>
-      <h2>{{ earthquake.country }}</h2>
-      <h3>{{ earthquake.place }}</h3>
-      <p>{{ earthquake.depth }} km deep</p>
-      <p>{{ earthquake.date }}</p>
-    </ion-item>
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past hour!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastHourFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+    </ion-item-group>
 
     <ion-list-header>Past Day</ion-list-header>
-    <ion-item *ngFor="let earthquake of earthquakes | pastDayFilter">
-      <ion-avatar item-left>
-        <p class="magnitude">
-          {{ earthquake.magnitude }}
-        </p>
-      </ion-avatar>
-      <h2>{{ earthquake.country }}</h2>
-      <h3>{{ earthquake.place }}</h3>
-      <p>{{ earthquake.depth }} km deep</p>
-      <p>{{ earthquake.date }}</p>
-    </ion-item>
+
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past day!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastDayFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+
+    </ion-item-group>
 
     <ion-list-header>Past Week</ion-list-header>
-    <ion-item *ngFor="let earthquake of earthquakes | pastWeekFilter">
-      <ion-avatar item-left>
-        <p class="magnitude">
-          {{ earthquake.magnitude }}
-        </p>
-      </ion-avatar>
-      <h2>{{ earthquake.country }}</h2>
-      <h3>{{ earthquake.place }}</h3>
-      <p>{{ earthquake.depth }} km deep</p>
-      <p>{{ earthquake.date }}</p>
-    </ion-item>
 
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past week!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastWeekFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+    </ion-item-group>
   </ion-list>
 </ion-content>

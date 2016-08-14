@@ -1,34 +1,38 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {RecentService} from './recent.service';
-import {Earthquake} from '../../models/earthquake';
+
+import {Tremor} from '../../models/tremor';
+import {TremorService} from '../../services/tremor.service';
+import {TremorItem} from '../../components/tremor-item.component';
+
 import {
   PastHourFilter,
   PastDayFilter,
   PastWeekFilter
-} from '../../filters/earthquake';
+} from '../../pipes/tremor.pipe';
 
 @Component({
   templateUrl: 'build/pages/recent/recent.html',
   pipes: [PastHourFilter, PastDayFilter, PastWeekFilter],
-  providers: [RecentService]
+  providers: [TremorService],
+  directives: [TremorItem]
 })
 export class RecentPage {
   errorMessage: string;
-  earthquakes: Earthquake[];
+  tremors: Tremor[];
 
-  constructor (private navCtrl: NavController, private recentService: RecentService) {
-    this.earthquakes = [];
-    this.getEarthquakes();
+  constructor (private navCtrl: NavController, private tremorService: TremorService) {
+    this.tremors = [];
+    this.getTremors();
   }
 
   private url = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
 
-  getEarthquakes (): void {
-    this.recentService
-      .getEarthquakes(this.url)
+  getTremors (): void {
+    this.tremorService
+      .getTremors(this.url)
       .subscribe(
-        earthquakes => this.earthquakes = earthquakes,
+        tremors => this.tremors = tremors,
         error => this.errorMessage = <any>error);
   }
 }

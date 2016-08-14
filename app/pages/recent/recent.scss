@@ -10,4 +10,12 @@
     text-align: center;
     border-radius: 50%;
   }
+
+  .tremor-list-empty {
+    display: none;
+  }
+
+  .tremor-group .tremor-list-empty:only-child {
+    display: flex;
+  }
 }

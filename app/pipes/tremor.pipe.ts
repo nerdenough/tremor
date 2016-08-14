@@ -1,16 +1,16 @@
 import {Injectable, Pipe, PipeTransform} from '@angular/core';
-import {Earthquake} from '../models/earthquake';
+import {Tremor} from '../models/tremor';
 
 @Pipe({
   name: 'pastHourFilter'
 })
 @Injectable()
 export class PastHourFilter implements PipeTransform {
-  transform (earthquakes: Earthquake[]): any {
+  transform (tremors: Tremor[]): any {
     let ms = new Date().getTime();
     let hour = 60 * 60 * 1000;
 
-    return earthquakes.filter(earthquake => ms - earthquake.time <= hour);
+    return tremors.filter(tremor => ms - tremor.time <= hour);
   }
 }
 
@@ -19,14 +19,14 @@ export class PastHourFilter implements PipeTransform {
 })
 @Injectable()
 export class PastDayFilter implements PipeTransform {
-  transform (earthquakes: Earthquake[]): any {
+  transform (tremors: Tremor[]): any {
     let ms = new Date().getTime();
     let hour = 60 * 60 * 1000;
     let day = 24 * 60 * 60 * 1000;
 
-    return earthquakes.filter(
-      earthquake => ms - earthquake.time > hour
-      && ms - earthquake.time <= day);
+    return tremors.filter(
+      tremor => ms - tremor.time > hour
+      && ms - tremor.time <= day);
   }
 }
 
@@ -35,11 +35,11 @@ export class PastDayFilter implements PipeTransform {
 })
 @Injectable()
 export class PastWeekFilter implements PipeTransform {
-  transform (earthquakes: Earthquake[]): any {
+  transform (tremors: Tremor[]): any {
     let ms = new Date().getTime();
     let day = 24 * 60 * 60 * 1000;
 
-    return earthquakes.filter(
-      earthquake => ms - earthquake.time > day);
+    return tremors.filter(
+      tremor => ms - tremor.time > day);
   }
 }

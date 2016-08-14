@@ -1,4 +1,4 @@
-export class Earthquake {
+export class Tremor {
   country: string;
   place: string;
   date: string;
