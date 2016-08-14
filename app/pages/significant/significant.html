@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Significant</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="recent">
+  <ion-list class="tremor-list" no-lines>
+    <ion-list-header>Past Day</ion-list-header>
+
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past day!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastHourAndDayFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+
+    </ion-item-group>
+
+    <ion-list-header>Past Week</ion-list-header>
+
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past week!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastWeekFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+    </ion-item-group>
+
+    <ion-list-header>Past Month</ion-list-header>
+
+    <ion-item-group class="tremor-group">
+      <ion-item class="tremor-list-empty">
+        <ion-avatar item-left>
+          <p class="magnitude">:)</p>
+        </ion-avatar>
+
+        <h3>No tremors in the past month!</h3>
+      </ion-item>
+
+      <tremor-item
+        *ngFor="let tremor of tremors | pastMonthFilter"
+        [magnitude]="tremor.magnitude"
+        [country]="tremor.country"
+        [place]="tremor.place"
+        [depth]="tremor.depth"
+        [date]="tremor.date">
+      </tremor-item>
+    </ion-item-group>
+
+  </ion-list>
+</ion-content>
