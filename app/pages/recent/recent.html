@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tremor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="recent">
+  <p *ngFor="let earthquake of earthquakes">
+    {{ earthquake.magnitude }}
+  </p>
+</ion-content>
