@@ -6,12 +6,11 @@
 
 <ion-content class="recent">
   <ion-list no-lines>
-    <ion-list-header>
-      Past Hour
-    </ion-list-header>
-    <ion-item *ngFor="let earthquake of earthquakes">
+    <ion-list-header>Past Hour</ion-list-header>
+
+    <ion-item *ngFor="let earthquake of earthquakes | pastHourFilter">
       <ion-avatar item-left>
-        <p class="magnitude" [ngStyle]="{'background-color': '#e73737'}">
+        <p class="magnitude">
           {{ earthquake.magnitude }}
         </p>
       </ion-avatar>
@@ -20,5 +19,32 @@
       <p>{{ earthquake.depth }} km deep</p>
       <p>{{ earthquake.date }}</p>
     </ion-item>
+
+    <ion-list-header>Past Day</ion-list-header>
+    <ion-item *ngFor="let earthquake of earthquakes | pastDayFilter">
+      <ion-avatar item-left>
+        <p class="magnitude">
+          {{ earthquake.magnitude }}
+        </p>
+      </ion-avatar>
+      <h2>{{ earthquake.country }}</h2>
+      <h3>{{ earthquake.place }}</h3>
+      <p>{{ earthquake.depth }} km deep</p>
+      <p>{{ earthquake.date }}</p>
+    </ion-item>
+
+    <ion-list-header>Past Week</ion-list-header>
+    <ion-item *ngFor="let earthquake of earthquakes | pastWeekFilter">
+      <ion-avatar item-left>
+        <p class="magnitude">
+          {{ earthquake.magnitude }}
+        </p>
+      </ion-avatar>
+      <h2>{{ earthquake.country }}</h2>
+      <h3>{{ earthquake.place }}</h3>
+      <p>{{ earthquake.depth }} km deep</p>
+      <p>{{ earthquake.date }}</p>
+    </ion-item>
+
   </ion-list>
 </ion-content>
