@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RecentPage} from '../recent/recent';
 import {SignificantPage} from '../significant/significant';
-import {ContactPage} from '../contact/contact';
+import {SettingsPage} from '../settings/settings';
 
 @Component({
   templateUrl: 'build/pages/tabs/tabs.html'
@@ -17,6 +17,6 @@ export class TabsPage {
     // should be each tab's root Page
     this.tab1Root = RecentPage;
     this.tab2Root = SignificantPage;
-    this.tab3Root = ContactPage;
+    this.tab3Root = SettingsPage;
   }
 }
