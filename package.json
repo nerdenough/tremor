@@ -29,7 +29,7 @@
     "run-sequence": "1.1.5"
   },
   "name": "tremor",
-  "description": "tremor: An Ionic project",
+  "description": "An earthquake app of seismic proportions",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
