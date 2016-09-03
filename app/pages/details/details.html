@@ -9,7 +9,7 @@
     <img src="{{tremor.map}}">
     <ion-card-content>
       <ion-card-title>
-        {{tremor.place}}, {{tremor.country}}
+        <span *ngIf="tremor.place">{{tremor.place}}, </span>{{tremor.country}}
       </ion-card-title>
     </ion-card-content>
   </ion-card>
