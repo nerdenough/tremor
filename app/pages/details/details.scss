@@ -1,0 +1,21 @@
+.recent {
+  .magnitude {
+    width: 50px;
+    height: 50px;
+    background: #e73737;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  .tremor-list-empty {
+    display: none;
+  }
+
+  .tremor-group .tremor-list-empty:only-child {
+    display: flex;
+  }
+}

@@ -19,13 +19,9 @@
 
       <tremor-item
         *ngFor="let tremor of tremors | pastHourAndDayFilter"
-        [magnitude]="tremor.magnitude"
-        [country]="tremor.country"
-        [place]="tremor.place"
-        [depth]="tremor.depth"
-        [date]="tremor.date">
+        [tremor]="tremor"
+        (click)="viewDetails(tremor)">
       </tremor-item>
-
     </ion-item-group>
 
     <ion-list-header>Past Week</ion-list-header>
@@ -41,11 +37,8 @@
 
       <tremor-item
         *ngFor="let tremor of tremors | pastWeekFilter"
-        [magnitude]="tremor.magnitude"
-        [country]="tremor.country"
-        [place]="tremor.place"
-        [depth]="tremor.depth"
-        [date]="tremor.date">
+        [tremor]="tremor"
+        (click)="viewDetails(tremor)">
       </tremor-item>
     </ion-item-group>
 
@@ -62,11 +55,8 @@
 
       <tremor-item
         *ngFor="let tremor of tremors | pastMonthFilter"
-        [magnitude]="tremor.magnitude"
-        [country]="tremor.country"
-        [place]="tremor.place"
-        [depth]="tremor.depth"
-        [date]="tremor.date">
+        [tremor]="tremor"
+        (click)="viewDetails(tremor)">
       </tremor-item>
     </ion-item-group>
 

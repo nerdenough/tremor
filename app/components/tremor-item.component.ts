@@ -1,13 +1,10 @@
 import {Component, Input} from '@angular/core';
+import {Tremor} from '../models/tremor';
 
 @Component({
   selector: 'tremor-item',
   templateUrl: 'build/components/tremor-item.component.html'
 })
 export class TremorItem {
-  @Input() magnitude: string;
-  @Input() country: string;
-  @Input() place: string;
-  @Input() depth: string;
-  @Input() date: string;
+  @Input() tremor: Tremor;
 }

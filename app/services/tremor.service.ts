@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {Config} from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -54,6 +55,12 @@ export class TremorService {
 
       tremor.magnitude = feature.properties.mag.toFixed(1);
       tremor.intensity = feature.properties.mmi;
+      tremor.map = 'https://maps.googleapis.com/maps/api/staticmap'
+        + '?center=' + tremor.latitude + ',' + tremor.longitude
+        + '&zoom=6&size=600x300&maptype=roadmap'
+        + '&markers=color:red%7Clabel:A%7C'
+        + tremor.latitude + ',' + tremor.longitude
+        + '&key=' + Config.mapsApiKey;
 
       tremor.time = time;
       tremor.date = dateString;

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
+import {DetailsPage} from '../details/details';
+
 import {Tremor} from '../../models/tremor';
 import {TremorService} from '../../services/tremor.service';
 import {TremorItem} from '../../components/tremor-item.component';
@@ -34,5 +36,9 @@ export class RecentPage {
       .subscribe(
         tremors => this.tremors = tremors,
         error => this.errorMessage = <any>error);
+  }
+
+  viewDetails (tremor: Tremor): void {
+    this.navCtrl.push(DetailsPage, {tremor: tremor});
   }
 }
